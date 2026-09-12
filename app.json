@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "field-ops",
-    "slug": "field-ops",
+    "name": "Field Ops",
+    "slug": "field-ops-task",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
     },
@@ -20,6 +20,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "@react-native-community/datetimepicker",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Field Ops to attach site images to work tasks."
+        }
+      ],
+      "expo-notifications"
+    ]
   }
 }
