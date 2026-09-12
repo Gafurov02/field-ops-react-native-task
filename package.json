@@ -11,8 +11,7 @@
     "expo-notifications": "~57.0.17",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
-    "react-native": "0.86.3",
-    "react-native-maps": "1.27.2"
+    "react-native": "0.86.3"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

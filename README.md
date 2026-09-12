@@ -27,7 +27,7 @@ Field Ops is a TypeScript React Native app for field technicians to create, plan
 | State | `useTaskStore` hook | Keeps UI separate from persistence, notification, and sync services without adding unnecessary global-state dependencies. |
 | Attachments | `expo-image-picker` | Provides native image-library access and stores attachment metadata alongside tasks. |
 | Reminders | `expo-notifications` | Schedules local due-date and 45-second demo notifications, with permission handling. |
-| Map | `react-native-maps` | Shows manually supplied coordinate pins and opens a task from a marker. |
+| Map | Offline coordinate canvas | Visualizes manually supplied coordinates as clickable relative-position pins, without a map API key or network dependency. |
 | Connectivity | `@react-native-community/netinfo` | Detects reconnects so pending local changes can be synchronized. |
 | Mock API | `json-server` | Meets the REST synchronization requirement without a production backend. |
 
@@ -87,13 +87,7 @@ This repository includes `eas.json` with an internal-distribution APK profile. T
 
 1. Install and sign in to EAS CLI: `npx eas-cli login`
 2. Create or link the Expo project: `npx eas build:configure`
-3. For an Android release map, obtain a Google Maps Android SDK key restricted to this app and set it in the environment. Never commit it:
-
-   ```bash
-   export GOOGLE_MAPS_API_KEY=your_restricted_key
-   ```
-
-4. Build the installable artifact:
+3. Build the installable artifact:
 
    ```bash
    npx eas build --platform android --profile preview
@@ -116,10 +110,9 @@ Conflict resolution is deliberately simple: **last write wins**. A newly synchro
 ## Known limitations and trade-offs
 
 - The app accepts manual addresses and coordinates/presets; it intentionally does not perform paid online geocoding.
-- Remote map tiles require connectivity, but saved task locations and coordinate data remain available offline.
+- The map is an offline coordinate canvas rather than a turn-by-turn navigation product. It visualizes relative task positions, supports clickable pins, and remains available without a map provider or network connection.
 - Device photo URIs are persisted as attachment metadata. An image deleted from the device photo library may no longer be renderable; the details screen handles that case gracefully.
 - The mock API is intentionally a local development server, not a production backend.
-- An Android release map requires a developer-provided, restricted Google Maps key via `GOOGLE_MAPS_API_KEY`; no secrets are committed.
 
 ## Video demonstration checklist
 
